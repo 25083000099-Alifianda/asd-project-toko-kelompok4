@@ -1,7 +1,7 @@
 import math
 
-from atribut_produk import AtributProduk
-from data_awal import buat_data_awal
+from models.atribut_produk import AtributProduk
+from models.data_awal import buat_data_awal
 
 # Array of Struct: seluruh produk disimpan di sini.
 # Diisi dari data_awal.py (fungsi mengembalikan list baru tiap dipanggil).
