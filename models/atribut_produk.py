@@ -106,14 +106,15 @@ def jalankan_cli():
     import os, sys
     root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     if root not in sys.path:
-        sys.path.insert(0, root)   # folder root, tempat produk.py berada
-    import produk # import di sini agar tidak circular
+        sys.path.insert(0, root)   # root proyek, tempat produk.py berada
+    import produk                  # import 
+    import cari_update             # fitur 3 (cari) dan 4 (update stok)
 
     print("ENTITAS: PRODUK\n")
     AtributProduk.tampilkan_tabel_atribut()
 
     while True:
-        print("\n1. Tambah produk  2. Lihat semua produk  0. Keluar")
+        print("\n1. Tambah produk  2. Lihat semua produk  3. Cari produk  4. Update stok  0. Keluar")
         try:
             pilihan = input("Pilih: ").strip()
             if pilihan == "0":
@@ -130,12 +131,15 @@ def jalankan_cli():
                 print(("[OK] " if ok else "[ERROR] ") + pesan)
             elif pilihan == "2":
                 produk.tampilkan_semua()
+            elif pilihan == "3":
+                cari_update.menu_cari(produk.daftar_produk)
+            elif pilihan == "4":
+                cari_update.menu_update_stok(produk.daftar_produk)
             else:
                 print("[ERROR] Pilihan tidak valid.")
         except (KeyboardInterrupt, EOFError):
             print("\nProgram dihentikan.")
             break
 
-
-if __name__ == "__main__":
+if __name__ == "__main__":        
     jalankan_cli()
