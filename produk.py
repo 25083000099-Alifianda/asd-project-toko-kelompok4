@@ -136,6 +136,13 @@ def update_harga(kode, harga_teks):
 # ---------------------------------------------------------------
 # Fitur 6: Hapus produk
 # ---------------------------------------------------------------
+def ambil_nama_produk(kode):
+    """Return nama produk untuk ditampilkan sebelum konfirmasi, atau None jika tidak ada."""
+    index = cari_index_by_kode(kode)
+    if index == -1:
+        return None
+    return daftar_produk[index]["Nama"]
+
 def hapus_produk(kode):
     """Hapus produk dari list. Konfirmasi dilakukan di main.py."""
     produk = cari_by_kode(kode)
